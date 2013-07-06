@@ -22,6 +22,7 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'growl'
 end
 
 group :production do
