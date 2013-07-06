@@ -1,8 +1,11 @@
+# run tests with control line
+# bundle exec rspec spec/requests/static_pages_spec.rb
 require 'spec_helper'
 
 describe "Static Pages" do
   describe "Home page" do
     it "should have the content 'Sample App'" do
+# capybara methods visit & page.should
       visit '/static_pages/home'
       page.should have_selector('h1',
                         :text => 'Sample App')
@@ -37,5 +40,18 @@ describe "Static Pages" do
                         :text => " | About Us")
     end
   end
+
+  describe "Contact page" do
+    it "should have the h1 'contact'" do
+      visit '/static_pages/contact'
+      page.should have_selector('h1', :text => 'Contact')
+    end
+    it "should have the title 'contact Us'" do
+      visit '/static_pages/contact'
+      page.should have_selector('title',
+                        :text => " | Contact")
+    end
+  end
+
 end
 
