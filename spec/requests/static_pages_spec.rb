@@ -11,8 +11,8 @@ describe "Static Pages" do
     before { visit root_path }
 
     it { should have_selector('h1', :text => 'Sample App') }
-    it { page.should have_selector('title', :text => "Ruby on Rails Tutorial Sample App") }
-    it { page.should_not have_selector('title', :text => '| Home') }
+    it { page.should have_title('Ruby on Rails Tutorial Sample App') }
+    it { page.should_not have_title('| Home') }
 
     describe "for signed-in users" do
       let(:user) { FactoryGirl.create(:user) }
@@ -35,7 +35,7 @@ describe "Static Pages" do
     before { visit help_path }
 
     it { page.should have_content('Help') }
-    it { page.should have_selector('title', :text => " | Help") }
+    it { page.should have_title(' | Help') }
   end
 
   describe "About page" do
@@ -46,7 +46,7 @@ describe "Static Pages" do
     end
 
     it "should have the title 'About Us'" do
-      page.should have_selector('title', :text => " | About Us")
+      page.should have_title(' | About Us')
     end
   end
 
@@ -58,8 +58,7 @@ describe "Static Pages" do
     end
 
     it "should have the title 'contact Us'" do
-      page.should have_selector('title',
-                        :text => " | Contact")
+      page.should have_title(' | Contact')
     end
   end
 

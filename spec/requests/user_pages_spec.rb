@@ -59,7 +59,7 @@ describe "User Pages" do
     before { visit signup_path }
 
     it { should have_selector('h1',         text: 'Sign up') }
-    it { should have_selector('title', text: (' | Sign up')) }
+    it { should have_title(' | Sign up') }
   end
 
   describe "signup" do
@@ -91,7 +91,7 @@ describe "User Pages" do
         let(:user) { User.find_by(email: 'user@example.com') }
 
         it { should have_link('Sign out') }
-        it { should have_selector('title', text: user.name) }
+        it { should have_title(user.name) }
         it { should have_selector('div.alert.alert-success', text: 'Welcome') }
       end
     end
@@ -106,7 +106,7 @@ describe "User Pages" do
     before { visit user_path(user) }
 
     it { should have_content(user.name) }
-    it { should have_selector('title', text: user.name) }
+    it { should have_title(user.name) }
 
     describe "microposts" do
       it { should have_content(m1.content) }
@@ -133,7 +133,7 @@ describe "User Pages" do
         click_button "Save changes"
       end
 
-      it { should have_selector('title', text: new_name) }
+      it { should have_title(new_name) }
       it { should have_selector('div.alert.alert-success') }
       it { should have_link('Sign out', href: signout_path) }
       specify{ expect(user.reload.name).to eq new_name }
@@ -142,7 +142,7 @@ describe "User Pages" do
 
     describe "page" do
       it { should have_content("Update your profile") }
-      it { should have_selector('title', text: "Edit user") }
+      it { should have_title('Edit user') }
       it { should have_link('change', href: 'http://gravatar.com/emails') }
     end
 

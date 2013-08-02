@@ -27,7 +27,7 @@ group :assets do
 end
 
 group :test do
-  gem 'capybara'
+  gem 'capybara', '~> 2.1.0'
   gem 'growl'
   gem 'factory_girl_rails'
 end
